@@ -24,7 +24,7 @@ The assistant covers six Microsoft Entra Suite products:
 | **Entra ID Governance** | Access reviews, entitlement management, lifecycle workflows, Privileged Identity Management |
 | **Entra Verified ID** | Digital credential issuance and verification, decentralized identity flows |
 
-Detailed product references are available under [.github/skills/entra-poc-assistant/references/products/](.github/skills/entra-poc-assistant/references/products/).
+Detailed product references are available under [.github/skills/entra-poc-advisor/references/products/](.github/skills/entra-poc-advisor/references/products/).
 
 ## Operation Modes
 
@@ -39,7 +39,7 @@ You select an operation mode at the start of every session. The assistant never 
 > [!IMPORTANT]
 > Even in Read-Write mode, the assistant **never writes directly** to your tenant. All changes are performed by you — via PowerShell scripts you review and execute, or portal instructions you follow manually.
 
-See [.github/skills/entra-poc-assistant/references/operation-modes.md](.github/skills/entra-poc-assistant/references/operation-modes.md) for detailed mode transition rules.
+See [.github/skills/entra-poc-advisor/references/operation-modes.md](.github/skills/entra-poc-advisor/references/operation-modes.md) for detailed mode transition rules.
 
 ## POC Lifecycle
 
@@ -72,7 +72,7 @@ flowchart TD
 | **5. Testing** | Provides testing checklists and procedures. Validates test outcomes via MCP where possible (e.g., sign-in logs). |
 | **6. Documentation** | Exports the complete POC guide, architecture diagrams, gap analysis, and session audit log. |
 
-See [.github/skills/entra-poc-assistant/references/poc-lifecycle.md](.github/skills/entra-poc-assistant/references/poc-lifecycle.md) for detailed phase guidance.
+See [.github/skills/entra-poc-advisor/references/poc-lifecycle.md](.github/skills/entra-poc-advisor/references/poc-lifecycle.md) for detailed phase guidance.
 
 ## Pre-Built Scenarios
 
@@ -97,7 +97,7 @@ See [.github/skills/entra-poc-assistant/references/poc-lifecycle.md](.github/ski
 
 You can also describe a **custom scenario** in natural language, and the assistant will structure it following the same schema.
 
-See [.github/skills/entra-poc-assistant/references/scenarios/](.github/skills/entra-poc-assistant/references/scenarios/) for full scenario definitions.
+See [.github/skills/entra-poc-advisor/references/scenarios/](.github/skills/entra-poc-advisor/references/scenarios/) for full scenario definitions.
 
 ## Conversation Templates
 
@@ -105,10 +105,10 @@ Four reusable conversation flows are available as starting points:
 
 | Template | When to Use |
 |---|---|
-| [POC Planning](.github/skills/entra-poc-assistant/references/prompts/poc-planning.md) | Starting a new POC — requirements gathering, product recommendations, scenario selection, timeline and effort estimates |
-| [Configuration Review](.github/skills/entra-poc-assistant/references/prompts/configuration-review.md) | Reviewing an existing deployment — identify components, read config via MCP, check against best practices, produce findings |
-| [Gap Analysis](.github/skills/entra-poc-assistant/references/prompts/gap-analysis.md) | Comparing current vs. target state — define target, read tenant config, classify gaps, prioritize remediation |
-| [Scenario Walkthrough](.github/skills/entra-poc-assistant/references/prompts/scenario-walkthrough.md) | Step-by-step guided configuration — overview, prerequisites, configuration steps with validation at each stage |
+| [POC Planning](.github/skills/entra-poc-advisor/references/prompts/poc-planning.md) | Starting a new POC — requirements gathering, product recommendations, scenario selection, timeline and effort estimates |
+| [Configuration Review](.github/skills/entra-poc-advisor/references/prompts/configuration-review.md) | Reviewing an existing deployment — identify components, read config via MCP, check against best practices, produce findings |
+| [Gap Analysis](.github/skills/entra-poc-advisor/references/prompts/gap-analysis.md) | Comparing current vs. target state — define target, read tenant config, classify gaps, prioritize remediation |
+| [Scenario Walkthrough](.github/skills/entra-poc-advisor/references/prompts/scenario-walkthrough.md) | Step-by-step guided configuration — overview, prerequisites, configuration steps with validation at each stage |
 
 ## Artifacts You Can Get
 
@@ -123,7 +123,7 @@ The assistant generates the following output artifacts on request:
 | **Audit Log** | Markdown + JSON | Complete session record of every MCP call, recommendation, warning, and generated artifact |
 | **Prerequisite Report** | Markdown | Pass/fail checklist for licenses, admin roles, and infrastructure with remediation guidance for each gap |
 
-Templates for these artifacts are available under [.github/skills/entra-poc-assistant/assets/templates/](.github/skills/entra-poc-assistant/assets/templates/).
+Templates for these artifacts are available under [.github/skills/entra-poc-advisor/assets/templates/](.github/skills/entra-poc-advisor/assets/templates/).
 
 ## Safety Guardrails
 
@@ -137,14 +137,14 @@ Seven absolute safety rules are enforced at all times and **cannot be overridden
 6. **No skipped audit trails** — Every MCP call, recommendation, and warning is logged
 7. **No broad-scope changes without warning** — Changes affecting all users, all apps, or tenant-wide settings trigger an explicit warning and confirmation prompt
 
-See [.github/skills/entra-poc-assistant/references/safety-guardrails.md](.github/skills/entra-poc-assistant/references/safety-guardrails.md) for detailed rules and warning triggers.
+See [.github/skills/entra-poc-advisor/references/safety-guardrails.md](.github/skills/entra-poc-advisor/references/safety-guardrails.md) for detailed rules and warning triggers.
 
 ## Repository Structure
 
 ```
 .github/
 └── skills/
-    └── entra-poc-assistant/              # Copilot Skill (auto-discovered by VS Code)
+    └── entra-poc-advisor/              # Copilot Skill (auto-discovered by VS Code)
         ├── SKILL.md                      # Skill definition and core behavior
         ├── assets/
         │   └── templates/                # Output artifact templates
@@ -207,7 +207,7 @@ See [benchmarks/README.md](benchmarks/README.md) for setup instructions and exec
 
 ## Installation & Setup
 
-Follow these steps to clone the repository, open it in VS Code, and start chatting with the Entra POC Assistant as a Copilot agent.
+Follow these steps to clone the repository, open it in VS Code, and start chatting with the Entra POC Advisor as a Copilot agent.
 
 ### Prerequisites
 
@@ -239,7 +239,7 @@ Or in VS Code: **File → Open Folder…** and select the cloned `EntraSuite-POC
 ### Step 3 — Verify the Skill Is Detected
 
 1. Open **Copilot Chat** — press `Ctrl+Alt+I` (Windows/Linux) or `Cmd+Alt+I` (macOS), or click the Copilot Chat icon in the Activity Bar.
-2. Type `/` in the chat input — you should see **entra-poc-assistant** listed as an available skill.
+2. Type `/` in the chat input — you should see **entra-poc-advisor** listed as an available skill.
 3. Alternatively, just ask a relevant question like *"Help me plan a Global Secure Access POC"* — the skill activates automatically based on your prompt.
 
 > [!TIP]

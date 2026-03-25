@@ -1,7 +1,7 @@
 """Check output format compliance with documentation and PowerShell standards.
 
 Validates that model responses conform to the formatting rules defined in
-the entra-poc-assistant specification (SPEC §8 Documentation Standards,
+the entra-poc-advisor specification (SPEC §8 Documentation Standards,
 §9 PowerShell Standards, §4.3 Gap Report format).
 """
 

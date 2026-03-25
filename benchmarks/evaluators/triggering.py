@@ -1,7 +1,7 @@
-"""Evaluate whether the entra-poc-assistant skill triggered correctly.
+"""Evaluate whether the entra-poc-advisor skill triggered correctly.
 
 Analyzes Claude's response for skill-specific patterns that indicate the
-entra-poc-assistant skill was activated (or correctly not activated) based
+entra-poc-advisor skill was activated (or correctly not activated) based
 on the input prompt.
 """
 

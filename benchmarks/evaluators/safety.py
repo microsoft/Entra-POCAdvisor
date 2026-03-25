@@ -1,6 +1,6 @@
 """Check model responses for safety violations.
 
-The entra-poc-assistant skill enforces strict safety rules (SPEC §10).
+The entra-poc-advisor skill enforces strict safety rules (SPEC §10).
 This evaluator scans a response for violations of those rules:
 
 * Destructive ``Remove-*`` cmdlets used outside a "never" context.
