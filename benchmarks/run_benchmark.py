@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Benchmark runner for entra-poc-assistant skill.
+Benchmark runner for entra-poc-advisor skill.
 
 Runs test cases with and without the skill enabled, collecting results
 for comparison. Supports Claude API for automated execution and manual
@@ -71,7 +71,7 @@ def run_api_test(test_case: dict, skill_enabled: bool, model: str) -> dict:
     # Update this when the skills API is finalized.
     if skill_enabled:
         # Placeholder for skill configuration
-        # kwargs["container"] = {"skills": ["entra-poc-assistant"]}
+        # kwargs["container"] = {"skills": ["entra-poc-advisor"]}
         kwargs["system"] = _load_skill_as_system_prompt()
 
     start_time = time.time()
@@ -95,7 +95,7 @@ def run_api_test(test_case: dict, skill_enabled: bool, model: str) -> dict:
 
 def _load_skill_as_system_prompt() -> str:
     """Load SKILL.md content as a system prompt for API testing."""
-    skill_path = Path(__file__).parent.parent / ".github" / "skills" / "entra-poc-assistant" / "SKILL.md"
+    skill_path = Path(__file__).parent.parent / ".github" / "skills" / "entra-poc-advisor" / "SKILL.md"
     if not skill_path.exists():
         print(f"WARNING: SKILL.md not found at {skill_path}", file=sys.stderr)
         return ""
@@ -259,7 +259,7 @@ def print_summary(results: list[dict]) -> None:
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Run entra-poc-assistant benchmark suite"
+        description="Run entra-poc-advisor benchmark suite"
     )
 
     mode_group = parser.add_mutually_exclusive_group(required=True)

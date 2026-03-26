@@ -1,6 +1,6 @@
-# entra-poc-assistant Benchmark Suite
+# entra-poc-advisor Benchmark Suite
 
-Automated benchmark suite for measuring the impact of the `entra-poc-assistant` Claude Skill on Entra POC task quality. Runs test cases with and without the skill enabled and compares results across triggering accuracy, functional completeness, safety compliance, and output format adherence.
+Automated benchmark suite for measuring the impact of the `entra-poc-advisor` Claude Skill on Entra POC task quality. Runs test cases with and without the skill enabled and compares results across triggering accuracy, functional completeness, safety compliance, and output format adherence.
 
 ## Prerequisites
 
