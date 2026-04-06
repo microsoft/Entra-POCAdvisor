@@ -63,6 +63,7 @@ Each scenario section in a reference file follows this structure:
 | gsa-traffic-profiles | Traffic Forwarding Profiles | `global-secure-access.md` | Low | 20 min |
 | gsa-client-deployment | GSA Client Deployment | `global-secure-access.md` | Medium | 30 min |
 | gsa-ca-integration | Conditional Access Integration | `global-secure-access.md` | Medium | 45 min |
+| gsa-remote-network | Remote Network Connectivity | `global-secure-access.md` | High | 60 min |
 
 ### Identity Scenarios
 
