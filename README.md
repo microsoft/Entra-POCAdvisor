@@ -220,6 +220,64 @@ Choose one of the two installation options below, then verify the skill is detec
 | **Node.js 18+** | Required for Option A — includes `npm` and `npx` ([download](https://nodejs.org/)) |
 | **Python 3.10+** *(optional)* | Only needed if you want to run the benchmark suite or utility scripts |
 
+### Install Node.js
+
+Option A requires **Node.js 18 or later**. If you don't have it installed, follow the steps for your operating system below.
+
+> [!TIP]
+> Download the **LTS (Long Term Support)** version for the best stability.
+
+#### Windows
+
+1. Go to [https://nodejs.org/](https://nodejs.org/) and download the **Windows Installer (.msi)** for the LTS version.
+2. Run the installer and follow the prompts — the default options work for most users.
+3. Open a new terminal and verify the installation:
+
+   ```bash
+   node --version
+   npm --version
+   ```
+
+#### macOS
+
+**Option 1 — Installer:**
+
+1. Go to [https://nodejs.org/](https://nodejs.org/) and download the **macOS Installer (.pkg)** for the LTS version.
+2. Run the installer and follow the prompts.
+
+**Option 2 — Homebrew:**
+
+```bash
+brew install node@18
+```
+
+Verify:
+
+```bash
+node --version
+npm --version
+```
+
+#### Linux
+
+The recommended approach is to use [nvm (Node Version Manager)](https://github.com/nvm-sh/nvm):
+
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+source ~/.bashrc
+nvm install 18
+```
+
+Verify:
+
+```bash
+node --version
+npm --version
+```
+
+> [!NOTE]
+> Both commands should return a version number (e.g., `v18.x.x` and `10.x.x`). If you get "command not found", restart your terminal or check that Node.js is on your `PATH`.
+
 ---
 
 ### Option A — Install via Skills CLI (recommended)
