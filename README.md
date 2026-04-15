@@ -1,10 +1,10 @@
-# EntraSuite-POC
+# Entra-POCAdvisor
 
 A [GitHub Copilot Skill](https://docs.github.com/en/copilot/customizing-copilot/copilot-extensions/building-copilot-skills) that guides Microsoft Entra administrators through proof-of-concept deployments of the Microsoft Entra Suite. It provides expert advisory, configuration guidance, and documentation generation — all through a conversational-first approach.
 
 ## Overview
 
-EntraSuite-POC is designed for **Entra administrators** who need to plan, configure, validate, and document POC deployments across the Microsoft Entra Suite. Instead of generating outputs immediately, the assistant engages you in conversation: it asks clarifying questions, surfaces considerations you may not have thought of, recommends best practices, and helps you think through your POC strategy before producing any artifacts.
+Entra-POCAdvisor is designed for **Entra administrators** who need to plan, configure, validate, and document POC deployments across the Microsoft Entra Suite. Instead of generating outputs immediately, the assistant engages you in conversation: it asks clarifying questions, surfaces considerations you may not have thought of, recommends best practices, and helps you think through your POC strategy before producing any artifacts.
 
 When you're ready, it generates production-grade documentation, PowerShell scripts, gap analysis reports, and architecture diagrams — all following Microsoft documentation standards.
 
