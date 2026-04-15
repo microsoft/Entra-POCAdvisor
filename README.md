@@ -287,7 +287,7 @@ The [skills CLI](https://www.npmjs.com/package/skills) is an open-source tool th
 Run a single command to install the **entra-poc-assistant** skill:
 
 ```bash
-npx skills add https://github.com/LuisPFlores/EntraSuite-POC
+npx skills add https://github.com/microsoft/Entra-POCAdvisor
 ```
 
 The CLI auto-detects the coding agents installed on your machine and prompts you to select where to install the skill.
@@ -297,7 +297,7 @@ The CLI auto-detects the coding agents installed on your machine and prompts you
 To install only for GitHub Copilot:
 
 ```bash
-npx skills add https://github.com/LuisPFlores/EntraSuite-POC -a github-copilot
+npx skills add https://github.com/microsoft/Entra-POCAdvisor -a github-copilot
 ```
 
 #### Global installation
@@ -305,14 +305,14 @@ npx skills add https://github.com/LuisPFlores/EntraSuite-POC -a github-copilot
 Add `-g` to make the skill available across all your projects (installed to `~/.copilot/skills/`):
 
 ```bash
-npx skills add https://github.com/LuisPFlores/EntraSuite-POC -a github-copilot -g
+npx skills add https://github.com/microsoft/Entra-POCAdvisor -a github-copilot -g
 ```
 
 #### Other useful commands
 
 ```bash
 # List available skills in the repo without installing
-npx skills add https://github.com/LuisPFlores/EntraSuite-POC --list
+npx skills add https://github.com/microsoft/Entra-POCAdvisor --list
 
 # List installed skills
 npx skills list
