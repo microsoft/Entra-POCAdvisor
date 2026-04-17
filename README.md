@@ -336,19 +336,17 @@ Once installed, skip to [Verify the Skill Is Detected](#step-3--verify-the-skill
 #### Step 1 — Clone
 
 ```bash
-git clone https://github.com/<YOUR-ORG>/EntraSuite-POC.git
+git clone https://github.com/microsoft/Entra-POCAdvisor.git
 ```
-
-> Replace `<YOUR-ORG>` with the GitHub organization or username that hosts this repository.
 
 #### Step 2 — Open in VS Code
 
 ```bash
-cd EntraSuite-POC
+cd Entra-POCAdvisor
 code .
 ```
 
-Or in VS Code: **File → Open Folder…** and select the cloned `EntraSuite-POC` directory.
+Or in VS Code: **File → Open Folder…** and select the cloned `Entra-POCAdvisor` directory.
 
 ---
 
