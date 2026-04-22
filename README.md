@@ -121,60 +121,6 @@ Seven absolute safety rules are enforced at all times and **cannot be overridden
 
 See [.github/skills/entra-poc-advisor/references/safety-guardrails.md](.github/skills/entra-poc-advisor/references/safety-guardrails.md) for detailed rules and warning triggers.
 
-## Repository Structure
-
-```
-.github/
-└── skills/
-    └── entra-poc-advisor/              # Copilot Skill (auto-discovered by VS Code)
-        ├── SKILL.md                      # Skill definition and core behavior
-        ├── assets/
-        │   └── templates/                # Output artifact templates
-        │       ├── audit-log-template.md
-        │       ├── gap-report-template.md
-        │       ├── poc-guide-template.md
-        │       └── powershell-template.ps1
-        ├── references/
-        │   ├── documentation-standards.md    # Microsoft documentation style guide
-        │   ├── operation-modes.md            # Mode definitions and transition rules
-        │   ├── poc-lifecycle.md              # Six-phase lifecycle detailed guidance
-        │   ├── powershell-standards.md       # PowerShell conventions and patterns
-        │   ├── safety-guardrails.md          # Safety rules and warning triggers
-        │   ├── products/                     # Product reference sheets
-        │   │   ├── entra-id-governance.md
-        │   │   ├── entra-id-protection.md
-        │   │   ├── entra-internet-access.md
-        │   │   ├── entra-private-access.md
-        │   │   ├── entra-verified-id.md
-        │   │   └── global-secure-access.md
-        │   ├── prompts/                      # Conversation templates
-        │   │   ├── configuration-review.md
-        │   │   ├── gap-analysis.md
-        │   │   ├── poc-planning.md
-        │   │   └── scenario-walkthrough.md
-        │   └── scenarios/                    # Pre-built POC scenarios
-        │       ├── index.md
-        │       ├── global-secure-access.md
-        │       ├── governance.md
-        │       ├── identity.md
-        │       ├── internet-access.md
-        │       └── private-access.md
-        └── scripts/                          # Automation and validation scripts
-            ├── audit-logger.py
-            ├── Deploy-EmployeeGuestOnboarding.ps1
-            ├── Deploy-PrivateAccessQuickAccess.ps1
-            ├── generate-gap-report.py
-            ├── validate-configuration.py
-            └── validate-prerequisites.py
-benchmarks/                                   # Automated benchmark suite
-├── README.md
-├── run_benchmark.py
-├── compare_results.py
-├── evaluators/                               # Scoring evaluators
-├── scoring/                                  # Rubrics
-└── test_cases/                               # Triggering, functional, performance tests
-```
-
 ## Benchmarks
 
 An automated benchmark suite with **30 test cases** measures skill quality across three categories:
