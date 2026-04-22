@@ -45,24 +45,6 @@ See [.github/skills/entra-poc-advisor/references/operation-modes.md](.github/ski
 
 Every POC engagement follows a six-phase lifecycle. Phases are iterative — you can loop back at any point.
 
-```mermaid
-flowchart TD
-    A["1. Planning"] --> B["2. Prerequisites"]
-    B --> C["3. Configuration"]
-    C --> D["4. Validation"]
-    D --> E{"Gaps found?"}
-    E -->|Yes| C
-    E -->|No| F["5. Testing"]
-    F --> G["6. Documentation"]
-
-    A ---|"Gather requirements\nSelect scenarios\nDefine pilot scope"| A
-    B ---|"Check licenses\nVerify roles\nValidate infrastructure"| B
-    C ---|"Manual via docs\nScripted via PowerShell\nHybrid approach"| C
-    D ---|"Read tenant config\nCompare against target\nGenerate gap report"| D
-    F ---|"Client connectivity\nPolicy enforcement\nTraffic routing"| F
-    G ---|"Export final docs\nExport audit log\nProduction planning"| G
-```
-
 | Phase | What Happens |
 |---|---|
 | **1. Planning** | Conversational requirements gathering. You describe your goals, the assistant recommends products and scenarios, and together you refine the approach. Output generation starts **only when you say you're ready**. |
