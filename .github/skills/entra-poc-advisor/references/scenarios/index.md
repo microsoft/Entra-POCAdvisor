@@ -79,6 +79,14 @@ Each scenario section in a reference file follows this structure:
 | governance-access-reviews | Access Reviews | `governance.md` | Medium | 45 min |
 | governance-entitlement-mgmt | Entitlement Management | `governance.md` | High | 60 min |
 
+### External Identities Scenarios
+
+| ID | Name | File | Complexity | Time |
+|---|---|---|---|---|
+| external-id-b2b-collab | B2B Collaboration | `external-identities.md` | Medium | 45 min |
+| external-id-b2b-direct-connect | B2B Direct Connect | `external-identities.md` | Medium | 30 min |
+| external-id-ciam | CIAM (Customer Identity) | `external-identities.md` | High | 60 min |
+
 ## Custom Scenarios
 
 Administrators can describe custom scenarios in natural language. When this happens:

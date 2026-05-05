@@ -23,6 +23,7 @@ The assistant covers six Microsoft Entra Suite products:
 | **Entra ID Protection** | Risk detection engine, risky users/sign-ins reports, risk-based Conditional Access policies |
 | **Entra ID Governance** | Access reviews, entitlement management, lifecycle workflows, Privileged Identity Management |
 | **Entra Verified ID** | Digital credential issuance and verification, decentralized identity flows |
+| **Entra External Identities** | B2B collaboration (guest users), B2B direct connect (Teams shared channels), CIAM (customer sign-up/sign-in), social identity providers, cross-tenant access policies, self-service sign-up flows |
 
 Detailed product references are available under [.github/skills/entra-poc-advisor/references/products/](.github/skills/entra-poc-advisor/references/products/).
 
@@ -58,7 +59,7 @@ See [.github/skills/entra-poc-advisor/references/poc-lifecycle.md](.github/skill
 
 ## Pre-Built Scenarios
 
-14 ready-to-use scenarios across five categories, each with prerequisites, architecture diagrams, configuration steps, and validation procedures:
+17 ready-to-use scenarios across six categories, each with prerequisites, architecture diagrams, configuration steps, and validation procedures:
 
 | Category | Scenario | Complexity | Est. Time |
 |---|---|---|---|
@@ -76,6 +77,9 @@ See [.github/skills/entra-poc-advisor/references/poc-lifecycle.md](.github/skill
 | | ID Protection Risk Policies | Medium | 30 min |
 | **Governance** | Access Reviews | Medium | 45 min |
 | | Entitlement Management | High | 60 min |
+| **External Identities** | B2B Collaboration (guest onboarding) | Medium | 45 min |
+| | B2B Direct Connect (Teams shared channels) | Medium | 30 min |
+| | CIAM (customer sign-up/sign-in) | High | 60 min |
 
 You can also describe a **custom scenario** in natural language, and the assistant will structure it following the same schema.
 
