@@ -346,6 +346,128 @@ If the MCP server is connected and authenticated, the assistant will query the M
 - Your Entra ID credentials are valid and have the required permissions
 - Your network allows outbound connections to `graph.microsoft.com`
 
+## Using the Skill Beyond VS Code
+
+The Entra-POCAdvisor skill works across multiple GitHub Copilot surfaces — not just VS Code. Choose the option that fits your workflow.
+
+### Option 1: Copilot Chat on GitHub.com
+
+The skill activates automatically when you chat within the repository context on GitHub.com.
+
+1. Navigate to **https://github.com/microsoft/Entra-POCAdvisor**
+2. Click the **Copilot Chat** icon (bottom-right corner or top navigation bar)
+3. Start asking Entra POC questions — the skill's instructions are applied automatically based on your prompt
+
+> [!NOTE]
+> Only **Guidance Only mode** is available on github.com (no MCP server connection). For Read-Only or Read-Write modes, use VS Code or Copilot CLI with the MCP server configured.
+
+### Option 2: GitHub Copilot CLI (Terminal)
+
+Use the skill directly in your terminal without any IDE.
+
+#### Prerequisites
+
+| Requirement | Details |
+|---|---|
+| **GitHub CLI** | Install from https://cli.github.com or `winget install GitHub.cli` |
+| **GitHub authentication** | Run `gh auth login` |
+| **Copilot license** | Copilot Pro, Business, or Enterprise |
+| **Node.js 18+** | Required for `npx skills` commands |
+
+#### Setup on a New Device
+
+```bash
+# 1. Install GitHub CLI (if not already installed)
+# Windows:
+winget install GitHub.cli
+# macOS:
+brew install gh
+# Linux:
+sudo apt install gh
+
+# 2. Authenticate with GitHub
+gh auth login
+
+# 3. Install the Copilot CLI extension
+gh extension install github/gh-copilot
+
+# 4. Install the Entra-POCAdvisor skill globally
+npx skills add https://github.com/microsoft/Entra-POCAdvisor -a github-copilot -g -y
+
+# 5. Launch Copilot CLI
+gh copilot
+```
+
+#### Verify the Skill Is Available
+
+Once inside the Copilot CLI session:
+
+```text
+/skills          # Lists all installed skills — look for entra-poc-advisor
+/env             # Shows loaded environment (skills, MCP servers, instructions)
+```
+
+Then start chatting:
+
+```text
+You: "Help me plan a Global Secure Access POC"
+```
+
+The skill activates automatically when your prompt matches its description.
+
+#### Alternative: Project-Level Installation
+
+If you prefer the skill only in specific projects (not global):
+
+```bash
+# Navigate to your project
+cd /path/to/your-project
+
+# Install at project level
+npx skills add https://github.com/microsoft/Entra-POCAdvisor -a github-copilot
+
+# The skill is installed to .agents/skills/entra-poc-advisor/
+```
+
+### Option 3: GitHub.com Immersive Chat
+
+1. Go to **https://github.com/copilot**
+2. Start a new conversation
+3. Attach the **microsoft/Entra-POCAdvisor** repository as context
+4. Ask your Entra POC questions — the skill instructions guide Copilot's responses
+
+### Comparison of Surfaces
+
+| Surface | Guidance Only | Read-Only (MCP) | Read-Write (MCP) | Skill Auto-Discovery |
+|---|---|---|---|---|
+| **VS Code** | ✅ | ✅ | ✅ | ✅ (workspace `.github/skills/`) |
+| **Copilot CLI** | ✅ | ✅ (with MCP config) | ✅ (with MCP config) | ✅ (global or project skills) |
+| **GitHub.com (repo chat)** | ✅ | ❌ | ❌ | ✅ (repo context) |
+| **GitHub.com (immersive)** | ✅ | ❌ | ❌ | Via repo attachment |
+
+### Configuring MCP Server for Copilot CLI
+
+To enable Read-Only/Read-Write modes in the CLI, configure the MCP server:
+
+```bash
+# Run from the skill's directory or your project root
+npx @microsoft/mcp-server-enterprise
+```
+
+Or add to your project's MCP configuration (`.agents/mcp.json` or equivalent):
+
+```json
+{
+  "servers": {
+    "microsoft-graph-enterprise": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "@microsoft/mcp-server-enterprise"]
+    }
+  }
+}
+```
+
 ## Quick Start
 
 ```text
