@@ -346,26 +346,11 @@ If the MCP server is connected and authenticated, the assistant will query the M
 - Your Entra ID credentials are valid and have the required permissions
 - Your network allows outbound connections to `graph.microsoft.com`
 
-## Using the Skill Beyond VS Code
+## Using the Skill with GitHub Copilot CLI
 
-The Entra-POCAdvisor skill works across multiple GitHub Copilot surfaces — not just VS Code. Choose the option that fits your workflow.
+Use the Entra-POCAdvisor skill directly in your terminal without any IDE.
 
-### Option 1: Copilot Chat on GitHub.com
-
-The skill activates automatically when you chat within the repository context on GitHub.com.
-
-1. Navigate to **https://github.com/microsoft/Entra-POCAdvisor**
-2. Click the **Copilot Chat** icon (bottom-right corner or top navigation bar)
-3. Start asking Entra POC questions — the skill's instructions are applied automatically based on your prompt
-
-> [!NOTE]
-> Only **Guidance Only mode** is available on github.com (no MCP server connection). For Read-Only or Read-Write modes, use VS Code or Copilot CLI with the MCP server configured.
-
-### Option 2: GitHub Copilot CLI (Terminal)
-
-Use the skill directly in your terminal without any IDE.
-
-#### Prerequisites
+### Prerequisites
 
 | Requirement | Details |
 |---|---|
@@ -374,7 +359,7 @@ Use the skill directly in your terminal without any IDE.
 | **Copilot license** | Copilot Pro, Business, or Enterprise |
 | **Node.js 18+** | Required for `npx skills` commands |
 
-#### Setup on a New Device
+### Setup on a New Device
 
 ```bash
 # 1. Install GitHub CLI (if not already installed)
@@ -398,7 +383,7 @@ npx skills add https://github.com/microsoft/Entra-POCAdvisor -a github-copilot -
 gh copilot
 ```
 
-#### Verify the Skill Is Available
+### Verify the Skill Is Available
 
 Once inside the Copilot CLI session:
 
@@ -415,7 +400,7 @@ You: "Help me plan a Global Secure Access POC"
 
 The skill activates automatically when your prompt matches its description.
 
-#### Alternative: Project-Level Installation
+### Alternative: Project-Level Installation
 
 If you prefer the skill only in specific projects (not global):
 
@@ -428,22 +413,6 @@ npx skills add https://github.com/microsoft/Entra-POCAdvisor -a github-copilot
 
 # The skill is installed to .agents/skills/entra-poc-advisor/
 ```
-
-### Option 3: GitHub.com Immersive Chat
-
-1. Go to **https://github.com/copilot**
-2. Start a new conversation
-3. Attach the **microsoft/Entra-POCAdvisor** repository as context
-4. Ask your Entra POC questions — the skill instructions guide Copilot's responses
-
-### Comparison of Surfaces
-
-| Surface | Guidance Only | Read-Only (MCP) | Read-Write (MCP) | Skill Auto-Discovery |
-|---|---|---|---|---|
-| **VS Code** | ✅ | ✅ | ✅ | ✅ (workspace `.github/skills/`) |
-| **Copilot CLI** | ✅ | ✅ (with MCP config) | ✅ (with MCP config) | ✅ (global or project skills) |
-| **GitHub.com (repo chat)** | ✅ | ❌ | ❌ | ✅ (repo context) |
-| **GitHub.com (immersive)** | ✅ | ❌ | ❌ | Via repo attachment |
 
 ### Configuring MCP Server for Copilot CLI
 
