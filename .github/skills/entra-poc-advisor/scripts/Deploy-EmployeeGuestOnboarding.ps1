@@ -138,6 +138,16 @@ Write-Host "Entra POC: Streamline Employee & Guest Onboarding" -ForegroundColor 
 Write-Host "========================================`n" -ForegroundColor Cyan
 Write-Host "Checking prerequisites..." -ForegroundColor Cyan
 
+# Check PowerShell version (Graph SDK v2.x requires PS 7+ / .NET 8)
+if ($PSVersionTable.PSVersion.Major -lt 7) {
+    Write-Host "  ERROR: PowerShell 7+ is required. Graph SDK v2.x is incompatible with PowerShell 5.1 (.NET Framework 4.8)." -ForegroundColor Red
+    Write-Host "    The MSAL EventSource tracing causes an EventSourceException on the legacy .NET runtime." -ForegroundColor Red
+    Write-Host "    Install PowerShell 7: https://aka.ms/install-powershell" -ForegroundColor Yellow
+    Write-Host "    Then re-run this script using: pwsh.exe -File $($MyInvocation.MyCommand.Path)" -ForegroundColor Yellow
+    exit 1
+}
+Write-Host "  PowerShell $($PSVersionTable.PSVersion) detected." -ForegroundColor Green
+
 if (-not (Get-Module -ListAvailable -Name "Microsoft.Graph")) {
     Write-Host "  ERROR: Microsoft.Graph module not found. Install with:" -ForegroundColor Red
     Write-Host "    Install-Module Microsoft.Graph -Scope CurrentUser" -ForegroundColor Yellow

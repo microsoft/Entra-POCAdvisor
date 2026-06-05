@@ -38,6 +38,9 @@ You select an operation mode at the start of every session. The assistant never 
 | **Read-Write** | Microsoft MCP Server (read) | Everything above, plus PowerShell scripts and portal instructions pre-populated with your tenant-specific values (group IDs, UPNs, resource references) |
 
 > [!IMPORTANT]
+> **PowerShell 7+ (pwsh.exe) is required** for Read-Only and Read-Write modes. The Microsoft Graph PowerShell SDK v2.x is incompatible with PowerShell 5.1 (.NET Framework 4.8) — the MSAL EventSource tracing causes an `EventSourceException` on `Connect-MgGraph`. Install PowerShell 7 from [https://aka.ms/install-powershell](https://aka.ms/install-powershell).
+
+> [!IMPORTANT]
 > Even in Read-Write mode, the assistant **never writes directly** to your tenant. All changes are performed by you — via PowerShell scripts you review and execute, or portal instructions you follow manually.
 
 See [.github/skills/entra-poc-advisor/references/operation-modes.md](.github/skills/entra-poc-advisor/references/operation-modes.md) for detailed mode transition rules.
@@ -150,6 +153,7 @@ Choose one of the two installation options below, then verify the skill is detec
 | **GitHub Copilot extension** | Install from the VS Code Marketplace — includes Copilot Chat ([install](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)) |
 | **Git** | Any recent version ([download](https://git-scm.com/downloads)) |
 | **Node.js 18+** | Required for Option A — includes `npm` and `npx` ([download](https://nodejs.org/)) |
+| **PowerShell 7+** | Required for Read-Only/Read-Write modes — Graph SDK v2.x needs .NET 8 ([install](https://aka.ms/install-powershell)) |
 | **Python 3.10+** *(optional)* | Only needed if you want to run the benchmark suite or utility scripts |
 
 ### Install Node.js

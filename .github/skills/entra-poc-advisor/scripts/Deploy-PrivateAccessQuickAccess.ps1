@@ -71,6 +71,17 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
 # ─────────────────────────────────────────────
+# Prerequisites: PowerShell 7+ required
+# ─────────────────────────────────────────────
+if ($PSVersionTable.PSVersion.Major -lt 7) {
+    Write-Host "ERROR: PowerShell 7+ is required. Graph SDK v2.x is incompatible with PowerShell 5.1 (.NET Framework 4.8)." -ForegroundColor Red
+    Write-Host "  The MSAL EventSource tracing causes an EventSourceException on the legacy .NET runtime." -ForegroundColor Red
+    Write-Host "  Install PowerShell 7: https://aka.ms/install-powershell" -ForegroundColor Yellow
+    Write-Host "  Then re-run this script using: pwsh.exe -File $($MyInvocation.MyCommand.Path)" -ForegroundColor Yellow
+    exit 1
+}
+
+# ─────────────────────────────────────────────
 # Helper: Connect to Microsoft Graph
 # ─────────────────────────────────────────────
 function Connect-IfNeeded {
