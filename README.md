@@ -62,7 +62,7 @@ See [.github/skills/entra-poc-advisor/references/poc-lifecycle.md](.github/skill
 
 ## Pre-Built Scenarios
 
-17 ready-to-use scenarios across six categories, each with prerequisites, architecture diagrams, configuration steps, and validation procedures:
+22 ready-to-use scenarios across six categories, each with prerequisites, architecture diagrams, configuration steps, and validation procedures:
 
 | Category | Scenario | Complexity | Est. Time |
 |---|---|---|---|
@@ -73,11 +73,17 @@ See [.github/skills/entra-poc-advisor/references/poc-lifecycle.md](.github/skill
 | | Security Profiles | Medium | 45 min |
 | | TLS Inspection | High | 60 min |
 | | Universal Tenant Restrictions | Medium | 30 min |
+| | Source Traffic Type & HTTP Method Filtering (Preview) | Medium | 45 min |
+| | Network Content Filtering & Purview DLP | High | 60 min |
+| | Explicit Forward Proxy (Preview) | High | 60 min |
+| | Remote Network Security via Baseline Profile | Medium | 30 min |
 | **Global Secure Access** | Traffic Forwarding Profiles | Low | 20 min |
 | | GSA Client Deployment | Medium | 30 min |
 | | Conditional Access Integration | Medium | 45 min |
+| | Remote Network Connectivity | High | 60 min |
 | **Identity** | Conditional Access Baseline | Medium | 45 min |
 | | ID Protection Risk Policies | Medium | 30 min |
+| | Account Recovery with Identity Verification | High | 60 min |
 | **Governance** | Access Reviews | Medium | 45 min |
 | | Entitlement Management | High | 60 min |
 | **External Identities** | B2B Collaboration (guest onboarding) | Medium | 45 min |
