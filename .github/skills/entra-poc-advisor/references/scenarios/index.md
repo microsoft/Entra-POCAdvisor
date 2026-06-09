@@ -55,6 +55,10 @@ Each scenario section in a reference file follows this structure:
 | internet-access-security-profiles | Security Profiles | `internet-access.md` | Medium | 45 min |
 | internet-access-tls-inspection | TLS Inspection | `internet-access.md` | High | 60 min |
 | internet-access-utr | Universal Tenant Restrictions | `internet-access.md` | Medium | 30 min |
+| internet-access-source-type-filtering | Source Traffic Type & HTTP Method Filtering (Preview) | `internet-access.md` | Medium | 45 min |
+| internet-access-content-filtering | Network Content Filtering & Purview DLP | `internet-access.md` | High | 60 min |
+| internet-access-explicit-forward-proxy | Explicit Forward Proxy (Preview) | `internet-access.md` | High | 60 min |
+| internet-access-remote-network | Remote Network Security via Baseline Profile | `internet-access.md` | Medium | 30 min |
 
 ### Global Secure Access Scenarios
 
@@ -71,6 +75,7 @@ Each scenario section in a reference file follows this structure:
 |---|---|---|---|---|
 | identity-ca-baseline | Conditional Access Baseline | `identity.md` | Medium | 45 min |
 | identity-id-protection | ID Protection | `identity.md` | Medium | 30 min |
+| identity-account-recovery | Account Recovery with Identity Verification | `identity.md` | High | 60 min |
 
 ### Governance Scenarios
 

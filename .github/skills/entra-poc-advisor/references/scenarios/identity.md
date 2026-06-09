@@ -212,3 +212,154 @@ flowchart TB
 4. **Notification delivery**
    - Type: manual
    - Description: Verify risk notification emails are delivered to configured recipients
+
+---
+
+## Scenario: identity-account-recovery
+
+**Name:** Microsoft Entra ID - Account Recovery with Identity Verification
+**Description:** Configure high-assurance self-service account recovery using identity verification providers and Microsoft Entra Verified ID with Face Check. This enables users who have lost all authentication methods to securely recover their accounts through government-issued ID verification and biometric matching, eliminating helpdesk dependency and social engineering risks.
+**Products:** Microsoft Entra ID, Microsoft Entra Verified ID
+**Complexity:** High
+**Estimated Time:** 60 minutes
+
+### Prerequisites
+
+- **Licenses:** Microsoft Entra ID P1 (minimum); Azure subscription for identity verification provider billing
+- **Roles:** Authentication Administrator (account recovery setup), Contributor or Billing Administrator (Azure subscription for IDV provider), User Administrator (verify user profiles)
+- **Infrastructure:**
+  - Microsoft Entra Verified ID enabled and configured in the tenant
+  - Face Check configured in the tenant
+  - Pilot security group with test users
+  - Test users must have First Name and Last Name properties populated (matching government-issued ID)
+  - Microsoft Authenticator installed on test device (for Verified ID credential storage)
+  - (Optional) Azure Function or Logic App for custom authentication extension
+
+### Architecture
+
+```mermaid
+flowchart TB
+    subgraph User["User (Locked Out)"]
+        SignIn["Sign-in Page<br/>'Can't access account'"]
+        Authenticator["Microsoft Authenticator<br/>(Verified ID wallet)"]
+    end
+
+    subgraph IDV["Identity Verification"]
+        Provider["IDV Provider<br/>(Microsoft Security Store)"]
+        GovID["Government ID<br/>Document Scan"]
+        Liveness["Liveness Check<br/>+ Face Match"]
+    end
+
+    subgraph Entra["Microsoft Entra"]
+        Recovery["Account Recovery"]
+        Profile["Identity Verification<br/>Profile"]
+        VerifiedID["Verified ID<br/>+ Face Check"]
+        Validation["Account Validation<br/>(Name matching)"]
+        Extension["Custom Auth Extension<br/>(Optional - HRIS check)"]
+        TAP["Temporary Access Pass"]
+    end
+
+    subgraph Outcome["Recovery Outcome"]
+        Passkey["Register New Passkey"]
+        MFA["Re-enroll MFA Methods"]
+    end
+
+    SignIn --> Recovery
+    Recovery --> Profile
+    Profile --> Provider
+    Provider --> GovID
+    GovID --> Liveness
+    Liveness -->|"Verified ID issued"| Authenticator
+    Authenticator -->|"Present credential"| VerifiedID
+    VerifiedID --> Validation
+    Validation -.->|"Optional"| Extension
+    Validation --> TAP
+    TAP --> Passkey
+    TAP --> MFA
+```
+
+### Configuration Steps
+
+1. **Verify Verified ID and Face Check are configured**
+   - Component: Verified ID
+   - Portal Path: **Entra admin center** > **Verified ID** > **Overview**
+   - Ensure authority is created with linked domain and Face Check is enabled
+   - Reference: [Configure Verified ID tenant](https://learn.microsoft.com/en-us/entra/verified-id/verifiable-credentials-configure-tenant-quick)
+
+2. **Open Account Recovery and complete setup checklist**
+   - Component: Entra ID
+   - Portal Path: **Entra admin center** > **Entra ID** > **Account recovery**
+   - Review the Getting Started checklist:
+     - Set up Verified ID ✓
+     - Set up Face Check with Verified ID ✓
+     - Set up passkeys after recovery (enable passkeys in Authentication Methods policy if not already)
+   - Enable passkeys in Authentication Methods policy if prompted
+
+3. **Subscribe to an identity verification provider**
+   - Component: Account Recovery
+   - Portal Path: **Account recovery** > **Profiles** tab > **Add** > **Identity verification providers** panel
+   - Browse available providers (filter by compliance standard if needed)
+   - Select **Get Solution** for chosen provider → opens Microsoft Security Store
+   - Complete: Select billing subscription, resource group, resource name, pricing plan
+   - Place order and activate on provider's admin portal
+   - Return to Account Recovery in Entra admin center
+
+4. **Create identity verification profile — Evaluation mode**
+   - Component: Account Recovery
+   - Portal Path: **Entra admin center** > **Entra ID** > **Account recovery** > **Profiles** > **Add**
+   - Configuration wizard:
+     - **Profile details:** Name (e.g., "POC Account Recovery - Pilot"), Description
+     - **Recovery mode:** Select **Evaluation** (test without actual recovery)
+     - **User groups:** Include pilot security group; Exclude break-glass accounts
+     - **Identity verification provider:** Select subscribed provider
+     - **Account validation:**
+       - ID Claim matching: firstName → First Name, lastName → Last Name
+       - Match confidence: **Relaxed** (recommended for POC to handle name variations)
+       - (Optional) Enable custom authentication extension for additional validation
+     - **Review and finalize:** Review settings, select **Complete**
+
+5. **Verify user profiles are ready for account recovery**
+   - Component: Entra ID
+   - Portal Path: **Entra admin center** > **Entra ID** > **Users** > Select user > **Edit properties**
+   - Confirm First Name and Last Name are populated and match government-issued ID
+   - Note: Display name is NOT used in matching — only First Name and Last Name
+
+6. **Test in Evaluation mode**
+   - On test device, navigate to sign-in page
+   - Select "Can't access your account?" link
+   - Follow identity verification flow (scan government ID, complete liveness check)
+   - Verify the flow completes without errors (account is NOT recovered in Evaluation mode)
+   - Review audit logs: **Account recovery** > **View audit logs**
+
+7. **Move profile to Production mode**
+   - Component: Account Recovery
+   - Portal Path: **Account recovery** > **Profiles** > Edit profile
+   - Change Recovery mode from Evaluation to **Production**
+   - Select **Complete**
+   - Test full recovery: user completes ID verification → receives Temporary Access Pass → registers new passkey
+
+### Validation Steps
+
+1. **Evaluation mode flow**
+   - Type: manual
+   - Description: As a pilot user with no authentication methods, initiate account recovery and complete identity verification through the provider. Verify the flow succeeds (credential issued, identity matched) but account is NOT recovered
+
+2. **Production mode recovery**
+   - Type: manual
+   - Description: After switching to Production mode, complete full account recovery flow. Verify user receives a Temporary Access Pass and can register a new passkey
+
+3. **Account validation matching**
+   - Type: manual
+   - Description: Test with a user whose Entra profile First/Last Name matches their government ID. Verify successful match. Test with a mismatched name and verify recovery fails
+
+4. **Audit logs**
+   - Type: automated
+   - Description: Check Account Recovery audit logs for recovery attempt entries showing provider, user, and outcome (success/failure)
+
+5. **Passkey enrollment after recovery**
+   - Type: manual
+   - Description: After successful recovery with TAP, verify the user is prompted to register a passkey and can subsequently sign in with the new passkey
+
+6. **Cost savings estimator**
+   - Type: manual
+   - Description: On the Account Recovery overview page, select "Estimate savings" and review projected helpdesk cost reduction based on your organization's user count and recovery rate

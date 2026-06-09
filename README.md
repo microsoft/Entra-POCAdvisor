@@ -128,18 +128,6 @@ Seven absolute safety rules are enforced at all times and **cannot be overridden
 
 See [.github/skills/entra-poc-advisor/references/safety-guardrails.md](.github/skills/entra-poc-advisor/references/safety-guardrails.md) for detailed rules and warning triggers.
 
-## Benchmarks
-
-An automated benchmark suite with **30 test cases** measures skill quality across three categories:
-
-| Category | Tests | What It Measures |
-|---|---|---|
-| **Triggering** | 15 | Skill activates on relevant Entra POC queries and stays silent on unrelated ones |
-| **Functional** | 10 | Response quality for core tasks — planning, configuration, gap analysis, script generation |
-| **Performance** | 5 | End-to-end output quality for complex multi-step scenarios |
-
-See [benchmarks/README.md](benchmarks/README.md) for setup instructions and execution modes.
-
 ## Installation & Setup
 
 Choose one of the two installation options below, then verify the skill is detected.
@@ -154,7 +142,6 @@ Choose one of the two installation options below, then verify the skill is detec
 | **Git** | Any recent version ([download](https://git-scm.com/downloads)) |
 | **Node.js 18+** | Required for Option A — includes `npm` and `npx` ([download](https://nodejs.org/)) |
 | **PowerShell 7+** | Required for Read-Only/Read-Write modes — Graph SDK v2.x needs .NET 8 ([install](https://aka.ms/install-powershell)) |
-| **Python 3.10+** *(optional)* | Only needed if you want to run the benchmark suite or utility scripts |
 
 ### Install Node.js
 
